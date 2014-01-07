@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app>
+    <head>
+        <title>Angular.js Example</title>
+        <meta charset="UTF-8" />
+        <!-- <link rel="stylesheet" type="text/css" href="css/"  /> -->
+    </head>
+    <body>
+        <h1>Angular.js</h1>
+
+        <h2>Example</h2>
+        <input type="text" ng-model="name">
+        <p> Hello!! {{name}}</p>
+
+        <table>
+        <caption>
+        <strong>プロフィール</strong>
+        <details>
+        <summary>補足</summary>
+        <p>ほげほげほげ</p>
+        </details>
+        </caption>
+        <thead>
+            <tr><th>id</th><th>Name</th><th>age</th></tr>
+        </thead>
+        <tbody ng-controller="profile">
+            <tr ng-repeat="person in people">
+                <th>{{person.id}}</th>
+                <th>{{person.name}}</th>
+                <th>{{person.age}}</th>
+            </tr>
+        </tbody>
+        </table>
+
+        <script src="./lib/js/angular.min.js"></script>
+        <script src="./js/app.js"></script>
+
+        <h2>参考</h2>
+        <ul>
+            <li><a href="http://angularjs.org/">angular.js</a></li>
+            <li><a href="http://morizyun.github.io/blog/backbone-marionette-angular-js/">angular.js</a></li>
+        </ul>
+
+        <h2>総評</h2>
+        <ul>
+            <li></li>
+        </ul>
+
+    </body>
+</html>
