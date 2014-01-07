@@ -1,7 +1,32 @@
 (function(){
 
+    // model/view
     console.log("Hello Backbone!");
+    var obj = new Backbone.Model();
+    obj.set({id: 0});
+    obj.set({name: "test"});
+    obj.set({age: 10});
 
+    var ShowModelView = Backbone.View.extend({
+        events: {
+            "click .model": "countUp"
+        },
+        initialize: function (options) {
+            _.bindAll(this, "render");
+            this.model.bind("change", this.render);
+            this.render(); 
+        },
+        render: function () {
+            $(this.el).html(_.template($("#ModelView-template").html(), this.model.attributes));
+        },
+        countUp: function () {
+            this.model.set({age: this.model.get('age') + 1});
+        }
+    });
+    var showModelView = new ShowModelView({el: $(".row"), model: obj});
+
+
+    // collection/view
     var obj1 = new Backbone.Model();
     obj1.set({id: 1});
     obj1.set({name: "hoge"});
@@ -27,21 +52,28 @@
     console.log("objs get: " + JSON.stringify(objs.get("c3")));
     console.log("objs at: " + JSON.stringify(objs.at(0)));
 
-/*
-    var View = new Backbone.View.extend({
-        el: $("#view1"),
+    var ShowCollectionView = Backbone.View.extend({
         events: {
-            "click": function(e) { console.log("Hello!!!"); }
+            "click .collection": "countUp"
+        },
+        initialize: function (options) {
+            _.bindAll(this, "render");
+            this.collection.bind("change", this.render);
+            this.render(); 
+        },
+        render: function () {
+            this.collection.each(function(model){
+                $(this.el).append(_.template($("#CollectionView-template").html(), model.attributes));
+            }, this);
+        },
+        countUp: function () {
+            // ここちゃんと出来てない。。。
+            this.collection.each(function(model){
+                model.set({age: model.get('age') + 1});
+            }, this);
         }
     });
-*/
-    var MyView = Backbone.View.extend({
-        tagName: "span",
-        id: "foo",
-        events: {
-            "click": function(e) { console.log("Hello!!!"); }
-        }
-    });
-    var myView = new MyView();
-    $("h1").append(myView.el);
+    var showCollectionView = new ShowCollectionView({el: $(".row"), collection: objs});
+
+
 }());
