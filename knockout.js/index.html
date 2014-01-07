@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Knockout Example</title>
+        <meta charset="UTF-8" />
+        <!-- <link rel="stylesheet" type="text/css" href="css/"  /> -->
+    </head>
+    <body>
+        <h1>Knockout.js</h1>
+
+        <p>ファーストネーム: <input data-bind="value: firstName" /></p>
+        <p>ラストネーム: <input data-bind="value: lastName" /></p>
+        <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
+
+        <table border=1>
+        <caption>
+        <strong>プロフィール</strong>
+        <details>
+        <summary>補足</summary>
+        <p>ほげほげほげ</p>
+        </details>
+        </caption>
+        <thead>
+        <tr><th>id</th><th>Name</th><th>age</th></tr>
+        </thead>
+        <tbody data-bind="foreach: profile">
+        <tr>
+            <th data-bind="text: id"></th>
+            <th data-bind="text: name"></th>
+            <th data-bind="text: age"></th>
+        </tr>
+        </tbody>
+        </table>
+
+
+        <script src="./lib/js/knockout-3.0.0.js"></script>
+        <script src="./js/app.js"></script>
+
+        <h2>参考</h2>
+        <ul>
+            <li><a href="http://knockoutjs.com/">knockout.js</a></li>
+            <li><a href="http://kojs.sukobuto.com/docs/">knockout.js 日本語ドキュメント</a></li>
+        </ul>
+        <img src="http://www.charlesnurse.com/Portals/6/Blog/Files/1/20/Windows-Live-Writer-Its-a-Knockout-1---An-MVVM-Javascript-Fr_F8B3-MVVM_Relation_5.jpg"/>
+
+        <h2>総評</h2>
+        <ul>
+            <li></li>
+        </ul>
+
+    </body>
+</html>
