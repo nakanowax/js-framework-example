@@ -12,12 +12,13 @@
         <input type="text" ng-model="name">
         <p> Hello!! {{name}}</p>
 
-        <div ng-controller="showView" >
+        <div ng-controller="showView">
 
         <span>ID : </span><input ng-model="inputId" type="text" value="" />
         <span>NAME : </span><input ng-model="inputName" type="text" value="" />
         <span>AGE : </span><input ng-model="inputAge" type="text" value="" />
         <input ng-click="addItem()" type="button" value="add" />
+        <input ng-click="getData()" type="button" value="get" />
 
         <table>
         <caption>
