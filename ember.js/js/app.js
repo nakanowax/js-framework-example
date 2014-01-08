@@ -1,6 +1,19 @@
 var App = Ember.Application.create();
 
-App.ApplicationController = Ember.ObjectController.extend({});
+App.ApplicationController = Ember.ObjectController.extend({
+    actions: {
+        addItem: function() {
+            console.log('clicked!!');
+            this.get('content').pushObject(
+                  Ember.Object.create({
+                      id: $('#input-id').val(),
+                      name: $('#input-name').val(),
+                      age: $('#input-age').val()
+                  })
+            )
+        }
+    }
+});
 
 App.ApplicationRoute = Ember.Route.extend({
   model: function() {
@@ -16,3 +29,4 @@ App.IndexRoute = Ember.Route.extend({
     return ['red', 'yellow', 'blue'];
   }
 });
+
