@@ -10,12 +10,22 @@ var ViewModel = function(first, last) {
         return this.firstName() + " " + this.lastName();
     }, this);
 
-
     this.profile = ko.observableArray([
         { id: 1, name: 'hoge', age: 21 },
         { id: 2, name: 'boo',  age: 31 },
         { id: 3, name: 'bar',  age: 41 }
     ]);
+
+    this.inputId = ko.observable();
+    this.inputName = ko.observable();
+    this.inputAge = ko.observable();
+    this.addItem = function() {
+        this.profile.push({
+            id: this.inputId,
+            name: this.inputName,
+            age: this.inputAge
+        });
+    };
 };
 
 ko.applyBindings(new ViewModel('HOGE','BOO'));

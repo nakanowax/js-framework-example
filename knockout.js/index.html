@@ -12,6 +12,11 @@
         <p>ラストネーム: <input data-bind="value: lastName" /></p>
         <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
 
+        <span>ID : </span><input data-bind="value: inputId" type="text" />
+        <span>NAME : </span><input data-bind="value: inputName" type="text" />
+        <span>AGE : </span><input data-bind="value: inputAge" type="text" />
+        <input data-bind="click: addItem" type="button" value="add" />
+
         <table border=1>
         <caption>
         <strong>プロフィール</strong>
