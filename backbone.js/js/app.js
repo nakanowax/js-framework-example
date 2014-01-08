@@ -75,5 +75,21 @@
     });
     var showCollectionView = new ShowCollectionView({el: $(".row"), collection: objs});
 
+    // 追加処理
+    var AddView = Backbone.View.extend({
+        el: $("#input-data"),
+        events: {
+            "click #button-add": "addItem"
+        },
+        addItem: function () {
+            var addData = new Backbone.Model();
+            addData.set({id: $("#input-id").val()});
+            addData.set({name: $("#input-name").val()});
+            addData.set({age: $("#input-age").val()});
+            $(".row").append(_.template($("#CollectionView-template").html(), addData.attributes));
+        }
+    });
+    var addView = new AddView();
+
 
 }());
