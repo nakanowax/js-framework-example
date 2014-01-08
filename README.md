@@ -17,6 +17,12 @@
 ### デメリット
 * http://hosokawa0825.github.io/slides/JavascriptFrameworksOverview/#backbonejs-features-2
 
+### 所感
+* テンプレート周りはあまり充実していない感じ。
+** なので、JQuery等を使って、DOMの紐付けをして、Viewを構成する感じ。
+* いい意味でView周りのライブラリを入れても書き方は変わらなそう。
+* でもその分View周りのコードをほかのライブラリに比べて記述が増えそうな感じ
+
 ## Ember.js
 ### メリット/デメリット
 * http://hosokawa0825.github.io/slides/JavascriptFrameworksOverview/#emberjs-features-1
