@@ -21,14 +21,27 @@ var ViewModel = function(first, last) {
 */
 
     self.profile = ko.observableArray();
+
     self.getData = function() {
         self.profile.removeAll();
         var url = "http://localhost:9292/get";
-        $.getJSON(url, function(data) {
-            for (var i = 0; i < data.data.length; i++) {
-                self.profile.push(data.data[i]);
+        $.getJSON(url, function(response) {
+            for (var i = 0; i < response.data.length; i++) {
+                self.profile.push(response.data[i]);
             }
         });
+    };
+
+    self.getDataFromPost = function() {
+        self.profile.removeAll();
+        var url = "http://localhost:9292/";
+        var data = {method: 'getUserData'};
+        $.post(url, ko.toJSON(data), function(response) {
+            for (var i = 0; i < response.data.length; i++) {
+                self.profile.push(response.data[i]);
+            }
+        });
+
     };
 
     self.inputId = ko.observable();
@@ -41,7 +54,34 @@ var ViewModel = function(first, last) {
             age: self.inputAge
         });
     };
+
+
+    // 画面切り替え
+    /*
+        data-bind with: で指定された変数が、null,undefinedの場合は、
+        その配下のDOMを表示しないというの使った場合の 画面遷移
+    */
+    self.currentView = ko.observable('page2');
+
+    self.page1 = ko.computed(function(){
+        if(self.currentView() == 'page1'){
+            return new PageView(self.currentView());
+        }else{
+            return null;
+        }
+    });
+    self.page2 = ko.computed(function(){
+        if(self.currentView() == 'page2'){
+            return new PageView(self.currentView());
+        }else{
+            return null;
+        }
+    });
 };
+
+var PageView = function(currentView) {
+   pageName = ko.observable(currentView + 'です');
+}
 
 ko.applyBindings(new ViewModel('HOGE','BOO'));
 

@@ -8,15 +8,35 @@
     <body>
         <h1>Knockout.js</h1>
 
+        <h2>Sample</h2>
         <p>ファーストネーム: <input data-bind="value: firstName" /></p>
         <p>ラストネーム: <input data-bind="value: lastName" /></p>
-        <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
+        <h3>Hello, <span data-bind="text: fullName"> </span>!</h3>
 
+        <hr/>
+
+        <h2>画面遷移</h2>
+        <p>画面遷移な処理は無いみたい。。。</p>
+
+        currentView:<input data-bind="value: currentView" />
+
+        <div data-bind="with: page1">
+            <span data-bind="text: pageName"><span>
+        </div>
+
+        <div data-bind="with: page2">
+            <span data-bind="text: pageName"><span>
+        </div>
+
+        <hr/>
+
+        <h2>リスト/要素追加</h2>
         <span>ID : </span><input data-bind="value: inputId" type="text" />
         <span>NAME : </span><input data-bind="value: inputName" type="text" />
         <span>AGE : </span><input data-bind="value: inputAge" type="text" />
         <input data-bind="click: addItem" type="button" value="add" />
         <input data-bind="click: getData" type="button" value="get" />
+        <input data-bind="click: getDataFromPost" type="button" value="post" />
 
         <table border=1>
         <caption>
@@ -42,6 +62,8 @@
         <script src="./lib/js/knockout-3.0.0.js"></script>
         <script src="./lib/js/jquery-1.10.2.min.js"></script>
         <script src="./js/app.js"></script>
+
+        <hr/>
 
         <h2>参考</h2>
         <ul>
