@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="ja" ng-app>
+<html lang="ja">
     <head>
         <title>Angular.js Example</title>
         <meta charset="UTF-8" />
         <!-- <link rel="stylesheet" type="text/css" href="css/"  /> -->
     </head>
-    <body>
+    <body ng-app="page">
         <h1>Angular.js</h1>
 
         <h2>Example</h2>
         <input type="text" ng-model="name">
         <p> Hello!! {{name}}</p>
 
-        <div ng-controller="showView">
+        <hr />
 
+        <a href="page1">page1</a>
+        <a href="page2">page2</a>
+
+        <div ng-view></div>
+
+        <hr />
+
+        <div ng-controller="showView" >
         <span>ID : </span><input ng-model="inputId" type="text" value="" />
         <span>NAME : </span><input ng-model="inputName" type="text" value="" />
         <span>AGE : </span><input ng-model="inputAge" type="text" value="" />
         <input ng-click="addItem()" type="button" value="add" />
         <input ng-click="getData()" type="button" value="get" />
+        <input ng-click="getDataFromPost()" type="button" value="post" />
 
         <table>
         <caption>
@@ -42,7 +51,11 @@
         </div>
 
         <script src="./lib/js/angular.min.js"></script>
+        <script src="./lib/js/angular-animate.min.js"></script>
+        <script src="./lib/js/angular-route.min.js"></script>
         <script src="./js/app.js"></script>
+
+        <hr />
 
         <h2>参考</h2>
         <ul>
