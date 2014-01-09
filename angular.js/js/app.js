@@ -1,16 +1,34 @@
-var app = angular.module('page', ['ngRoute', 'ngAnimate']);
 
-app.config(function($routeProvider, $locationProvider) {
-
-  $routeProvider.when('/page1', {
-    templateUrl: './page1.html'
-  });
-
-  $routeProvider.when('/page2', {
-    templateUrl: './page2.html'
-  });
+angular.module('page', ['ngRoute', 'ngAnimate'],
+  function($routeProvider, $locationProvider) {
+      $routeProvider.when('/page1/:pageId', {
+        templateUrl: 'page.html',
+        controller: Page1
+      });
+      $routeProvider.when('/page2/:pageId', {
+        templateUrl: 'page.html',
+        controller: Page2
+      });
+      $locationProvider.html5Mode(true);
 });
 
+function pageView($route, $routeParams, $location){
+    this.$route = $route;
+    this.$location = $location;
+    this.$routeParams = $routeParams;
+}
+
+function Page1 ($routeParams) {
+    this.pageName = "Page1";
+    this.nextPage = "page2";
+    this.$routeParams = $routeParams;
+}
+
+function Page2 ($routeParams) {
+    this.pageName = "Page2";
+    this.nextPage = "page1";
+    this.$routeParams = $routeParams;
+}
 
 function showView ($scope, $http) {
 /*

@@ -2,6 +2,7 @@
 <html lang="ja">
     <head>
         <title>Angular.js Example</title>
+        <base href="/Users/toshiyuki.hasegawa/workspace/js-framework-example/angular.js/">
         <meta charset="UTF-8" />
         <!-- <link rel="stylesheet" type="text/css" href="css/"  /> -->
     </head>
@@ -9,45 +10,56 @@
         <h1>Angular.js</h1>
 
         <h2>Example</h2>
+
+        <h3>Sample</h3>
         <input type="text" ng-model="name">
         <p> Hello!! {{name}}</p>
 
         <hr />
 
-        <a href="page1">page1</a>
-        <a href="page2">page2</a>
-
-        <div ng-view></div>
+        <h3>画面遷移</h3>
+        <div ng-controller="pageView as main">
+            <a href="page1/10">page1</a>
+            <a href="page2/20">page2</a>
+            <div ng-view></div>
+            <pre>$location.path() = {{main.$location.path()}}</pre>
+            <pre>$route.current.templateUrl = {{main.$route.current.templateUrl}}</pre>
+            <pre>$route.current.params = {{main.$route.current.params}}</pre>
+            <pre>$route.current.scope.name = {{main.$route.current.scope.name}}</pre>
+            <pre>$routeParams = {{main.$routeParams}}</pre>
+        </div>
+        <b>httpじゃないと対応していない模様です。。。</b>
 
         <hr />
 
+        <h3>リスト表示/要素追加</h3>
         <div ng-controller="showView" >
-        <span>ID : </span><input ng-model="inputId" type="text" value="" />
-        <span>NAME : </span><input ng-model="inputName" type="text" value="" />
-        <span>AGE : </span><input ng-model="inputAge" type="text" value="" />
-        <input ng-click="addItem()" type="button" value="add" />
-        <input ng-click="getData()" type="button" value="get" />
-        <input ng-click="getDataFromPost()" type="button" value="post" />
+            <span>ID : </span><input ng-model="inputId" type="text" value="" />
+            <span>NAME : </span><input ng-model="inputName" type="text" value="" />
+            <span>AGE : </span><input ng-model="inputAge" type="text" value="" />
+            <input ng-click="addItem()" type="button" value="add" />
+            <input ng-click="getData()" type="button" value="get" />
+            <input ng-click="getDataFromPost()" type="button" value="post" />
 
-        <table>
-        <caption>
-        <strong>プロフィール</strong>
-        <details>
-        <summary>補足</summary>
-        <p>ほげほげほげ</p>
-        </details>
-        </caption>
-        <thead>
-            <tr><th>id</th><th>Name</th><th>age</th></tr>
-        </thead>
-        <tbody >
-            <tr ng-repeat="person in people">
-                <th>{{person.id}}</th>
-                <th>{{person.name}}</th>
-                <th>{{person.age}}</th>
-            </tr>
-        </tbody>
-        </table>
+            <table>
+            <caption>
+            <strong>プロフィール</strong>
+            <details>
+            <summary>補足</summary>
+            <p>ほげほげほげ</p>
+            </details>
+            </caption>
+            <thead>
+                <tr><th>id</th><th>Name</th><th>age</th></tr>
+            </thead>
+            <tbody >
+                <tr ng-repeat="person in people">
+                    <th>{{person.id}}</th>
+                    <th>{{person.name}}</th>
+                    <th>{{person.age}}</th>
+                </tr>
+            </tbody>
+            </table>
         </div>
 
         <script src="./lib/js/angular.min.js"></script>
