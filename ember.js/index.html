@@ -46,6 +46,7 @@
             <li><a href="http://dev.classmethod.jp/series/getting-started%E2%80%8E-emberjs/">Ember.js 入門</a></li>
             <li><a href="https://github.com/emadurandal/emberjs-guides-japanese-translation">Ember.js Guides 日本語</a></li>
             <li><a href="http://www.slideshare.net/tricknotes/getting-started-with-emberjs">はじめる Ember.js</a></li>
+            <li><a href="http://emberjs.com/guides/models/connecting-to-an-http-server/">Connecting to an HTTP SERVER</a></li>
         </ul>
 
         <h2>総評</h2>
@@ -75,7 +76,7 @@
         <tr><th>id</th><th>Name</th><th>age</th></tr>
         </thead>
         <tbody>
-        {{#each item in model}}
+        {{#each item in App.People.get('person')}}
             <tr><td>{{item.id}}</td><th>{{item.name}}</th><td>{{item.age}}</td></tr>
         {{/each}}
         </tbody>

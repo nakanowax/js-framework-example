@@ -21,11 +21,24 @@ class MockApiApp
                       {:id => '3', :name => 'bar', :age => '41'}
                   ],
               }.to_json ]
+        when '/people/get/all'
+          return 200,
+              { 
+                  'Content-Type' => 'application/json',
+                  'Access-Control-Allow-Origin' => '*'
+              },
+              [{
+                  :people => {
+                      :person => [
+                          {:id => '1', :name => 'hoge', :age => '21'},
+                          {:id => '2', :name => 'boo', :age => '31'},
+                          {:id => '3', :name => 'bar', :age => '41'}
+                  ]},
+              }.to_json ]
         else
             return 200, {'Content-Type' => 'text/plain'}, "Welcome to Rack".chars
         end
     when 'POST'
-p "########## !!!!!!!!!"
         req = Rack::Request.new(env)
         json = JSON.parse(req.body.read)
         p json

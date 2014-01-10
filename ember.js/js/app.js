@@ -4,6 +4,10 @@ App.Router.map(function() {
     this.route("aboutme");
 });
 
+DS.RESTAdapter.reopen({
+    host: 'http://localhost:9292',
+});
+
 App.ApplicationController = Ember.ObjectController.extend({
     actions: {
         addItem: function() {
@@ -31,15 +35,29 @@ App.ApplicationController = Ember.ObjectController.extend({
     }
 });
 
-App.store = DS.Store.extend();
+App.People = DS.Model.extend({
+    person: DS.hasMany('person')
+});
+
+App.Person = DS.Model.extend({
+    id: DS.attr('number'),
+    name: DS.attr('string'),
+    age: DS.attr('number'),
+    people: DS.belongsTo('people')
+});
+
 
 App.ApplicationRoute = Ember.Route.extend({
     model: function() {
+        this.store.find(App.People, 'people/get/all', { name: 'HOGE'});
+    }
+    /*
     return [
         {id: 1, name: 'hoge', age: 21},
         {id: 2, name: 'boo', age: 31},
         {id: 3, name: 'bar', age: 36}
-    ]}
+    ]
+    */
 });
 
 App.PeopleView = Ember.View.extend({
