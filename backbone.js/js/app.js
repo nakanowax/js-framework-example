@@ -1,7 +1,6 @@
 (function(){
 
     // model/view
-    console.log("Hello Backbone!");
     var obj = new Backbone.Model();
     obj.set({id: 0});
     obj.set({name: "test"});
@@ -91,5 +90,32 @@
     });
     var addView = new AddView();
 
+
+    // Router,View
+    var PageView = Backbone.View.extend({
+        el: $('#page'),
+        render: function( str ) {
+            var $em = $('<em>').html( str ).css({
+                background: 'yellow',
+            }).hide();
+            this.$el.html( '' );
+            this.$el.append( $em );
+            $em.fadeIn();
+        }
+    });
+    var pageView = new PageView();
+
+    var Router = Backbone.Router.extend({
+        routes: {
+            "page/:id": "page",
+        },
+        page: function( pageId ){
+            pageView.render( 'PAGE : ' + pageId );
+        }
+    });
+
+    var app = {};
+    app.router = new Router();
+    Backbone.history.start();
 
 }());
