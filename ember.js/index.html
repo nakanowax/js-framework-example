@@ -76,7 +76,7 @@
         <tr><th>id</th><th>Name</th><th>age</th></tr>
         </thead>
         <tbody>
-        {{#each item in App.People.get('person')}}
+        {{#each item in model}}
             <tr><td>{{item.id}}</td><th>{{item.name}}</th><td>{{item.age}}</td></tr>
         {{/each}}
         </tbody>
